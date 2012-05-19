@@ -14,7 +14,7 @@
 		
 		public function shitbucket() {
 			//load config.xml
-			var configf = File.applicationDirectory.resolvePath(configFile); 
+			var configf = File.applicationDirectory.resolvePath("config.xml"); 
 			var fileStream = new FileStream();
 			fileStream.open(configf, FileMode.READ); 
 			var config:XML = XML(fileStream.readUTFBytes(fileStream.bytesAvailable)); 
@@ -22,6 +22,7 @@
 			//parse config.xml
 			var rules = new Array();
 			var dirs = new Array();
+			var tdirlistings = new Array();
 			var dirlistings = new Array();
 			for(var i = 0; i < config.rules.rule.length(); i++) {
 				rules[i] = new Array();
@@ -30,8 +31,17 @@
 			}
 			for(var j = 0; j < config.dirs.dir.length(); j++) {
 				dirs[j] = config.dirs.dir[j].toString();
-				dirlistings[dirs[j]] = (new File(dirs[j])).getDirectoryListing();
+				tdirlistings[dirs[j]] = (new File(dirs[j])).getDirectoryListing();
+				dirlistings[dirs[j]] = new Array();
+				for(var k = 0; k < tdirlistings[dirs[j]].length; k++) {
+					//for each file in tdirlistings[directory] add an array in dirlistings[directory]
+					//dirlistings[dirs[j]][k] = new Array();//set this directory's file to an array
+					//associative array; this directory by name's file by name = this directory's edit date
+					//directories->directory->tempfile = new array
+					dirlistings[dirs[j]][tdirlistings[dirs[j]][k].name] = tdirlistings[dirs[j]][k].modificationDate.getTime();
+				}
 			}
+			//trace(dirlistings["TestFolder1"]["tester"][0]);
 			//start timer to check directories
 			var time:Timer = new Timer(2000);
 			time.addEventListener("timer", checkdirs);
@@ -40,10 +50,13 @@
 		
 		private function checkdirs(e:TimerEvent) {
 			//reload local directory data into temp var
-			var tempdirlistings = new Array();
-			for(var i = 0; i < dirs.length; i++) {
+			for(var j = 0; j < config.dirs.dir.length(); j++) {
 				dirs[j] = config.dirs.dir[j].toString();
-				dirlistings[dirs[j]] = (new File(dirs[j])).getDirectoryListing();
+				tdirlistings[dirs[j]] = (new File(dirs[j])).getDirectoryListing();
+				dirlistings[dirs[j]] = new Array();
+				for(var k = 0; k < tdirlistings[dirs[j]].length; k++) {
+					dirlistings[dirs[j]][tdirlistings[dirs[j]][k].name] = tdirlistings[dirs[j]][k].modificationDate.getTime();
+				}
 			}
 		}
 			/*dirs = new Array();
