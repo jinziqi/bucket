@@ -4,6 +4,9 @@
 	import flash.events.Event;
 	import flash.utils.Timer;
 	import flash.events.TimerEvent;
+	import flash.html.HTMLLoader;
+	import flash.net.URLRequest;
+	import flash.events.Event;
 	public class shitbucket extends MovieClip {
 		private var directory:File;
 		private var contents:Array;
@@ -25,12 +28,19 @@
 		private function checklist(e:TimerEvent) {
 			var tempcontents:Array = new Array();
 			tempcontents = directory.getDirectoryListing();
-			for(var i:uint = 0; i < tempcontents.length-4; i++) {
+			for(var i:uint = 0; i < tempcontents.length; i++) {
 				if(contents[i] < tempcontents[i].modificationDate.getTime()) {
-					contents[i] = tempcontents[i].modificationDate.getTime();
-					trace("FILE EDIT");
+					contents[i] = tempcontents[i].modificationDate.getTime();				
+					var html:HTMLLoader = new HTMLLoader();
+					html.load(new URLRequest("index.html"));
+					html.width = stage.stageWidth;
+					html.height = stage.stageHeight;
+					//html.addEventListener(Event.COMPLETE, onLoaded);
+					addChild(html);
 				}
 			}
 		}
+		//private function onLoaded(e:Event) {
+		//}
 	}
 }
