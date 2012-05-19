@@ -60,9 +60,10 @@
 						dirlistings[dirs[j]][tempd[dirs[j]][k].name] = tempd[dirs[j]][k].modificationDate.getTime();
 						update(dirs[j]+"/"+tempd[dirs[j]][k].name);
 					}
-					/*else if(tempd[dirs[j]][k].modificationDate.getTime() == null) {
-						trace("NEW FILE");
-					}*/
+					else if(dirlistings[dirs[j]][tempd[dirs[j]][k].name] == null) {
+						dirlistings[dirs[j]][tempd[dirs[j]][k].name] = tempd[dirs[j]][k].modificationDate.getTime();
+						update(dirs[j]+"/"+tempd[dirs[j]][k].name);
+					}
 				}
 			}
 		}
