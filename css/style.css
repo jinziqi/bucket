@@ -1,21 +1,41 @@
 /* top right bottom left */	
-#chrome {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    top: 0px;
-    border-width: 59 17 17 17; 
-    -webkit-border-image: url(../images/desktop_panel.png) 59 17 17 17 stretch stretch;	
+
+#container {
+    height: 100%;
+    width: 100%;
+    background: #f8f8f8;
+    
 }
-#workspace {
-    position: absolute;
-    top:64px;
-    right:10px;
-    bottom:10px;
-    left:10px;
-    border-width: 1 2 2 2; 
+#appMain {
+    height: 500px;
+    width: 810px;
+    border-width: 1 2 2 2;
     -webkit-border-image: url(../images/workspace.png) 1 2 2 2 stretch stretch;	
+}
+#lefNav {
+	padding-top: 60px;
+	width: 200px;
+	float: left;
+}
+.navigation {
+	display: block;
+	padding: 15px 0px 0px 0px;
+	height: 30px;
+	width: 100%;
+	cursor: pointer;
+	font-size: 18px;
+	color: #333;
+}
+
+.contentView {
+	display: none;
+	padding: 20px;
+}
+
+#mainContent {
+	height: 100%;
+	width: 610px;
+	float: right;
 }
 #grip {
     position: absolute;

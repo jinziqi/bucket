@@ -10,31 +10,30 @@ $(function() {
 	});
 
 	function minFunc(event){
-		if(air.NativeApplication.supportsSystemTrayIcon) {
-	
-			window.nativeWindow.visible = false;
-			var iconLoad = new air.Loader();
-			iconLoad.contentLoaderInfo.addEventListener(air.Event.COMPLETE,iconLoadComplete);
-			iconLoad.load(new air.URLRequest("images/icons/16.png"));
-
-			trayIcon.menu = trayMenu;
-
-		} else if(air.NativeApplication.supportsDockIcon) {
-		
-		}
+		window.nativeWindow.visible = false;
 	}
 
 	window.nativeWindow.addEventListener(air.NativeWindowDisplayStateEvent .DISPLAY_STATE_CHANGE, minFunc);
 
-	var bindTrayEvents = function() {
-		trayIcon.addEventListener(air.MouseEvent.CLICK, function(event) {
-			trayIcon.bitmaps = [];
-			window.nativeWindow.restore();
-		})
-	}, 
-	iconLoadComplete = function(event) {
+	trayIcon.addEventListener(air.MouseEvent.CLICK, function(event) {
+		window.nativeWindow.restore();
+	});
+
+	var iconLoadComplete = function(event) {
 		trayIcon.bitmaps = [event.target.content.bitmapData];
 		trayIcon.tooltip = "Bucket!!!";
-		bindTrayEvents();
 	};	
+
+	if(air.NativeApplication.supportsSystemTrayIcon) {
+			
+		var iconLoad = new air.Loader();
+		iconLoad.contentLoaderInfo.addEventListener(air.Event.COMPLETE,iconLoadComplete);
+		iconLoad.load(new air.URLRequest("images/icons/16.png"));
+		trayIcon.menu = trayMenu;
+	} else if(air.NativeApplication.supportsDockIcon) {
+		
+	    iconLoad.contentLoaderInfo.addEventListener(air.Event.COMPLETE,iconLoadComplete); 
+    	iconLoad.load(new air.URLRequest("images/icons/128.png")); 
+    	trayIcon.menu = trayMenu;
+	}
 });
