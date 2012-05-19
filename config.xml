@@ -8,6 +8,10 @@
 			<type>png</type>
 			<svc>flickr</svc>
 		</rule>
+		<rule>
+			<type>txt</type>
+			<svc>google_docs</svc>
+		</rule>
 	</rules>
 	<dirs>
 		<dir>C:/Users/Jake/Desktop/TestFolder1</dir>
