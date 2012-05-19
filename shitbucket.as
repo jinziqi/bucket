@@ -43,7 +43,6 @@
 					dirlistings[dirs[j]][tdirlistings[dirs[j]][k].name] = tdirlistings[dirs[j]][k].modificationDate.getTime();
 				}
 			}
-			//trace(dirlistings["TestFolder1"]["tester"][0]);
 			//start timer to check directories
 			var time:Timer = new Timer(2000);
 			time.addEventListener("timer", checkdirs);
