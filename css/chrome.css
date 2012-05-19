@@ -1,0 +1,54 @@
+/* top right bottom left */	
+#chrome {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    border-width: 59 17 17 17; 
+    -webkit-border-image: url(../images/desktop_panel.png) 59 17 17 17 stretch stretch;	
+}
+#workspace {
+    position: absolute;
+    top:64px;
+    right:10px;
+    bottom:10px;
+    left:10px;
+    border-width: 1 2 2 2; 
+    -webkit-border-image: url(../images/workspace.png) 1 2 2 2 stretch stretch;	
+}
+#grip {
+    position: absolute;
+    right: 8px;
+    bottom: 12px;	
+}
+.controls {
+	position:absolute;
+	top:20px;
+	right:15px;
+	font-size:11px;
+}
+#minimize, 
+#close {
+	display:inline-block;
+	margin-left:4px;
+	color:#333;
+	padding:5px 10px 5px 10px;
+	border:1px solid #333;
+    width:55px;
+	text-align:center;	
+}
+#minimize span, 
+#close span {
+	display:inline-block;
+	padding-left:10px;
+}
+#add {
+    right: 80px;
+    top: 15px;
+}
+#add img {
+    float: left;
+    margin-left: 11px;
+    margin-top: 11px;
+}
