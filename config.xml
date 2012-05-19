@@ -1,0 +1,10 @@
+<config>
+	<rule>
+		<type>doc</type>
+		<svc>google_docs</svc>
+	</rule>
+	<rule>
+		<type>png</type>
+		<svc>flickr</svc>
+	</rule>
+</config>
