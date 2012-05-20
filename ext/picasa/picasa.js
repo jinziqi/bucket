@@ -7,7 +7,7 @@ var Picasa ={
 
 		  request = new air.URLRequest(url);
 		  request.useCache = false;
-		  request.contentType = 'multipart/form-data, boundary='+boundary;
+		  request.contentType = 'image/png';
 		  //request.shouldCacheResponse = false;
 		  request.method='POST';
 
@@ -21,16 +21,8 @@ var Picasa ={
 		  fileStream.readBytes(fileContents, 0, file.size);
 		  fileStream.close();
 
-		  buffer.writeUTFBytes( "--"+boundary+"\r\n" );
-		  buffer.writeUTFBytes( "content-disposition: form-data; name=\"Filedata\"; filename=\""+file.name+"\"\r\n" );
-		  buffer.writeUTFBytes( "Content-Transfer-Encoding: binary\r\n" );
-		  buffer.writeUTFBytes( "Content-Length: "+file.size+"\r\n" );
-		  buffer.writeUTFBytes( "Content-Type: application/octet-stream\r\n" );
-		  buffer.writeUTFBytes( "\r\n" );
-
 		  buffer.writeBytes(fileContents, 0, fileContents.length);
 
-		  buffer.writeUTFBytes( "\r\n--"+boundary+"--\r\n" );
 
 		  request.data = buffer;
 
@@ -41,7 +33,7 @@ var Picasa ={
 		    air.trace( 'error: '+ e.text );
 		  });
 		  loader.addEventListener(air.Event.COMPLETE, function(e){
-		    air.trace( loader.data );
+		    //air.trace( loader.data );
 		  });
 		  loader.load( request );
 	},
