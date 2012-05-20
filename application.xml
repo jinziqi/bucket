@@ -8,5 +8,7 @@
         <visible>true</visible> 
         <width>835</width> 
         <height>545</height> 
+	    <maximizable>false</maximizable>
+	    <resizable>false</resizable>
     </initialWindow>
 </application>
