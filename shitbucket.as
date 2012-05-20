@@ -46,11 +46,11 @@
 					dirlistings[dirs[j]][tdirlistings[dirs[j]][k].name] = tdirlistings[dirs[j]][k].modificationDate.getTime();
 				}
 			}
-			configure("config.xml");
 		}
 		
 		private function init() {
 			//start timer to check directories
+			configure("config.xml");
 			var time:Timer = new Timer(2000);
 			time.addEventListener("timer", checkdirs);
 			time.start();
