@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>AirBoilerplate.js</title>
+		<title>Happy Bucket</title>
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" media="screen" />
 		<link rel="stylesheet" type="text/css" href="css/screen.css" media="screen" />
 		<link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />			
@@ -13,7 +13,7 @@
 			<div id="appMain">
 				<div id="lefNav">
 					<img id="logo" src="images/happyBucket.png">
-					<a name="welcome" id="welcomeNav" class="navigation">Welcome</a>
+					<a name="welcome" id="welcomeNav" class="navigation" onClick="configure();">Welcome</a>
 					<a name="rules" id="manageRulesNav" class="navigation">Manage Rules</a>
 					<a name="services" id="myServicesNav" class="navigation">My Services</a>
 				</div>
@@ -94,7 +94,7 @@
 										<td>Select a folder to apply this rule</td>
 									</tr>
 									<tr>
-										<td><input type="button" id="folderBrowse" value="Browse"></td>
+										<td><input type="button" id="folderBrowse" value="Browse" onClick="browseForDir();"></td>
 									</tr>
 									<tr>
 										<td>Specify a service for each file type</td>
@@ -144,19 +144,9 @@
 	<script src="js/jquery.js"></script>
 	<script src="js/chrome.js"></script>
 	<script src="js/xml.js"></script>
+	<script src="js/file.js"></script>
 	<script src="ext/picasa/picasa.js"></script>
 	<script src="js/interface.js"></script>
+	<script src="app.js"></script>
 
-	 <script> 
-        function runASFunction(){ 
-            var libraryObject = new window.runtime.shitbucket;
-			libraryObject.accessDOM(window);
-        }
-		function updateFile(filename, svc) {
-			//send filename to svc
-			air.trace(svc);
-			//document.getElementById("welcome").innerHTML = filename;
-		}
-    </script> 
-	
-</html>  
+</html>
