@@ -1,7 +1,7 @@
 var Picasa ={
 	upload:function(path)
 	{
-		  url = "https://picasaweb.google.com/data/feed/api/user/default/albumid/default?access_token=ya29.AHES6ZRxsM3xZKsBIYT7eZa9EaqIyKyq7L_7nuLJzqsBsiA";
+		  url = "https://picasaweb.google.com/data/feed/api/user/default/albumid/default?access_token="+PicasaConfig.read("picasa_access");
 
 		  boundary = '--------------======-------------------AaB03x';
 
@@ -77,7 +77,7 @@ var Picasa ={
 	},
 	getAccessToken:function()
 	{
-		$.post('http://happybucket.com/ct/xt_custom_code.bix?c={CCBCE38D-2EA2-4919-B530-6E30FBA111F9}&event=google_access_token', {'code': PicasaConfig.read("picasa"),
+		$.post('http://happybucket.com/ct/xt_custom_code.bix?c={CCBCE38D-2EA2-4919-B530-6E30FBA111F9}&event=google_access_token', {'code': PicasaConfig.read("picasa_access"),
 		'client_id':'85959154006-m68f33t69ar0b4ttnp1u7sh94ceq9aot.apps.googleusercontent.com',
 		'client_secret':'X_Xa3yQb71J46q_5q3_HPlJ7',
 		'redirect_uri':'http%3A%2F%2Fhappybucket.com%2Fct%2Fxt_custom_code.bix%3Fc%3D%257BCCBCE38D-2EA2-4919-B530-6E30FBA111F9%257D%26event%3Dcallback',
@@ -93,8 +93,8 @@ var Picasa ={
 	},
 	saveToken:function(access,refresh)
 	{
-		var cr = air.File.lineEnding;
-		PicasaConfig.write("picasa", access+cr+refresh);
+		PicasaConfig.write("picasa_access", access);
+		PicasaConfig.write("picasa_refresh", refresh);
 	}
 }
 var PicasaConfig = {
