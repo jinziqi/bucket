@@ -1,19 +1,19 @@
 var Picasa ={
 	upload:function(path)
 	{
-		  url = "https://picasaweb.google.com/data/feed/api/user/111832862997785277947/albumid/5711289114905226177?access_token=1/fFBGRNJru1FQd44AzqT3Zg";
+		  url = "https://picasaweb.google.com/data/feed/api/user/default/albumid/default?access_token=ya29.AHES6ZSAMbcxzZgLATb9Df1t53ywtGnNzAVNmFbr2GKC7NBJpLZZ1g";
 
 		  boundary = '--------------======-------------------AaB03x';
 
 		  request = new air.URLRequest(url);
 		  request.useCache = false;
 		  request.contentType = 'multipart/form-data, boundary='+boundary;
-		  request.shouldCacheResponse = false;
+		  //request.shouldCacheResponse = false;
 		  request.method='POST';
 
 		  buffer = new air.ByteArray();
 
-		  file = new air.File("/Users/zjin/Documents/bucket/index.html");
+		  file = new air.File("/Users/zjin/Documents/bucket/images/happyBucket.png");
 
 		  fileStream = new air.FileStream();
 		  fileStream.open(file, air.FileMode.READ);
@@ -64,7 +64,7 @@ var Picasa ={
 	},
 	googleLogin:function()
 	{
-		var url="https://accounts.google.com/o/oauth2/auth?scope=https%3A%2F%2Fpicasaweb.google.com%2Fdata%2F&state=%2Fprofile&redirect_uri=http%3A%2F%2Fhappybucket.com%2Fct%2Fxt_custom_code.bix%3Fc%3D%257BCCBCE38D-2EA2-4919-B530-6E30FBA111F9%257D%26event%3Dcallback&response_type=code&client_id=85959154006-m68f33t69ar0b4ttnp1u7sh94ceq9aot.apps.googleusercontent.com&access_type=offline";
-	return url;
+		var url="https://accounts.google.com/o/oauth2/auth?scope=https%3A%2F%2Fpicasaweb.google.com%2Fdata%2F&state=%2Fprofile&redirect_uri=http%3A%2F%2Fhappybucket.com%2Fct%2Fxt_custom_code.bix%3Fc%3D%257BCCBCE38D-2EA2-4919-B530-6E30FBA111F9%257D%26event%3Dcallback&response_type=code&client_id=85959154006-m68f33t69ar0b4ttnp1u7sh94ceq9aot.apps.googleusercontent.com&access_type=offline&approval_prompt=force";
+		return url;
 	},
 }
