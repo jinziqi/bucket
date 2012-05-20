@@ -118,9 +118,9 @@ var fh = {
 		var stream = new air.FileStream();
 		if (prefsFile.exists) {
 			stream.open(prefsFile, air.FileMode.READ);
+			data = stream.readUTFBytes(stream.bytesAvailable);
+			stream.close();
 		}
-		data = stream.readUTFBytes(stream.bytesAvailable);
-		stream.close();
 		return $.trim(data);
 	},
 	//get file
