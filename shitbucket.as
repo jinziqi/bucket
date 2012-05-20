@@ -21,6 +21,7 @@
 		public function shitbucket() {}
 
 		public function configure(configFile:String) {
+			trace("configuring");
 			var configf = File.applicationDirectory.resolvePath(configFile); 
 			var fileStream = new FileStream();
 			fileStream.open(configf, FileMode.READ); 
@@ -50,6 +51,7 @@
 		
 		private function init() {
 			//start timer to check directories
+			trace("initializing");
 			configure("config.xml");
 			var time:Timer = new Timer(2000);
 			time.addEventListener("timer", checkdirs);
@@ -57,6 +59,7 @@
 		}
 		
 		private function checkdirs(e:TimerEvent) {
+			trace("checking for file updates");
 			//reload local directory data into temp var
 			var tempd = new Array();
 			for(var j = 0; j < dirs.length; j++) {
@@ -75,9 +78,11 @@
 		}
 		
 		private function update(filename:String) {
+			trace("testing if filetype is known");
 			//get file type, check if a rule exists for it
 			var svc = rules[filename.split(".").pop()];
 			if(svc) {
+				trace("sending "+filename+" to "+svc);
 				//call js to upload file
 				jsWindow.updateFile(filename, svc);
 			}
