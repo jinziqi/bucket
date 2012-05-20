@@ -32,18 +32,23 @@ $(function() {
 			appDirs[rule_id].folder = $('#selected_directory').html();
 			var doc_rule = new Object;
 			doc_rule.type = 'doc';
-			doc_rule.svc = $('#docSelectedService').html();
+			doc_rule.svc = $('#doc_service').html();
 			appDirs[rule_id].rules = new Array;
 			appDirs[rule_id].rules.push(doc_rule);
 
 			var doc_rule = new Object;
-			doc_rule.type = 'img';
-			doc_rule.svc = $('#imageSelectedService').html();
+			doc_rule.type = 'jpg';
+			doc_rule.svc = $('#img_service').html();
 			appDirs[rule_id].rules.push(doc_rule);
 
 			var doc_rule = new Object;
-			doc_rule.type = 'vid';
-			doc_rule.svc = $('#videoSelectedService').html();
+			doc_rule.type = 'mp3';
+			doc_rule.svc = $('#msc_service').html();
+			appDirs[rule_id].rules.push(doc_rule);
+
+			var doc_rule = new Object;
+			doc_rule.type = 'mp4';
+			doc_rule.svc = $('#vid_service').html();
 			appDirs[rule_id].rules.push(doc_rule);
 
 			saveData();
@@ -155,7 +160,16 @@ $(function() {
 			$('#selected_directory').html(appDirs[rule_id].folder);
 			for(var i=0; i<appDirs[rule_id].rules.length; i++) {
 				if(appDirs[rule_id].rules[i].type == 'doc') {
-					$('#docSelectedService').html(appDirs[rule_id].rules[i].svc);
+					$('#doc_service').html(appDirs[rule_id].rules[i].svc);
+				}
+				if(appDirs[rule_id].rules[i].type == 'jpg') {
+					$('#img_service').html(appDirs[rule_id].rules[i].svc);
+				}
+				if(appDirs[rule_id].rules[i].type == 'mp3') {
+					$('#msc_service').html(appDirs[rule_id].rules[i].svc);
+				}
+				if(appDirs[rule_id].rules[i].type == 'mp4') {
+					$('#vid_service').html(appDirs[rule_id].rules[i].svc);
 				}
 			}
 			

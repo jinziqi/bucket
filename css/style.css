@@ -9,6 +9,7 @@
 #appMain {
     height: 500px;
     width: 810px;
+    position: relative;
     border-width: 1 2 2 2;
     -webkit-border-image: url(../images/workspace.png) 1 2 2 2 stretch stretch;	
 }
@@ -195,6 +196,7 @@
 
 .selectedContent {
 	float: right;
+	margin-right: 10px;
 }
 
 
@@ -214,15 +216,30 @@
 }
 
 
-.fileButton {
+.fileType {
 	height: 30px;
 	width: 80px;
-	background: #6d6d6d;
-	padding-top: 3px;
+	padding-top: 14px;
 	margin-right: 20px;
-	color: #ffffff;
-	cursor: pointer;
+	color: #6d6d6d;
+	margin-left: 10px;
 }
+
+.serviceAnchor {
+	height: 18px;
+	width: 120px;
+	margin-right: 10px;
+	color: #26ab6c;
+	cursor: pointer;
+	border: 0px;
+	padding: 8px;
+	float: right;
+}
+
+.serviceAnchor:hover {
+	color: #6d6d6d;
+}
+
 .fileButton:hover {
 	background: #5e5e5e;
 }
@@ -237,7 +254,7 @@
 	cursor: pointer;
 	border: 0px;
 	float: right;
-	margin-top: 40px;
+	margin-top: 18px;
 	display: block;
 }
 
@@ -255,7 +272,7 @@
 	cursor: pointer;
 	float: right;
 	border: 0px;
-	margin-top: 40px;
+	margin-top: 18px;
 	display: block;
 }
 
@@ -263,6 +280,45 @@
 	background: #5e5e5e;
 }
 
+#fileTypeTable {
+	display: block;
+	height: 180px;
+	overflow: scroll;
+	overflow-x: hidden;
+	background-color: #ffffff;
+	margin-top: 20px;
+	margin-right: 20px;
+	border: 1px solid #d1d1d1;
+}
+
+#fileTypeTable tr {
+	height: 60px;
+}
+
+
+#fileTypeTable tr:nth-child(odd) {
+	background-color: #f8f8f8;
+}
+
+#serviceTable {
+	display: none;
+	height: 180px;
+	overflow: scroll;
+	overflow-x: hidden;
+	background-color: #ffffff;
+	margin-top: 20px;
+	margin-right: 20px;
+	border: 1px solid #d1d1d1;
+}
+
+#serviceTable tr {
+	height: 60px;
+}
+
+
+#serviceTable tr:nth-child(odd) {
+	background-color: #f8f8f8;
+}
 
 /*Manage Rules*/
 #serviceDescription {

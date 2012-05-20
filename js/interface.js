@@ -43,6 +43,17 @@ $(function() {
 		hideViews();
 		$('#addRules').show();
 	});
+	$('.serviceAnchor').click(function(){
+		$('#fileTypeTable').hide();
+		$('#serviceTable').attr('srv_id', $(this).attr('id'));
+		$('#serviceTable').css('display', 'block');
+	});
+	$('.serviceSelector').click(function(){
+		$('#serviceTable').hide();
+		$('#'+$('#serviceTable').attr('srv_id')).html($(this).html());
+		$('#fileTypeTable').css('display', 'block');
+	});
+
 	$('#myServicesNav').click(function(){
 		hideViews();
 		inactive();
