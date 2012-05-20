@@ -2,6 +2,7 @@ var libraryObject;
 function runASFunction(){ 
     libraryObject = new window.runtime.shitbucket;
 	libraryObject.accessDOM(window);
+	
 }
 function configure() {
 	libraryObject.configure("config.xml");
@@ -19,3 +20,12 @@ function browseForDir(){
 		document.getElementById('selected_directory').innerHTML = file.nativePath;
 	}
 }
+//Check if Facebook is enabled if not create onclick event to enable
+if(Facebook.getAccessToken())
+	$('#enableFacebook').html('Reset');
+else
+	$('#enableFacebook').html('Enable');
+$('#enableFacebook').click(function () {
+	if(Facebook.auth())
+		$('#enableFacebook').html('Reset');
+});
