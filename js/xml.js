@@ -34,7 +34,7 @@ $(function() {
 		}
 		else
 		{
-			//saveData();
+			saveData();
 		}
 		window.nativeWindow.visible = true;
 	}
@@ -82,7 +82,7 @@ $(function() {
 	 */
 	function saveData()
 	{
-		//createXMLData();
+		createXMLData();
 		//writeXMLData();
 	}
 	/**

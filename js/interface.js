@@ -6,19 +6,32 @@
 	function hideViews(){
 		$('.contentView').hide();
 	};
+	
+	function inactive(){
+		$('.navigation').removeClass('navActive');
+	};
 
 $(function() {
 
 	$('#welcome').show();
+	$('#welcomeNav').addClass('navActive');
 	
 	//Reveal Views
 	$('#welcomeNav').click(function(){
 		hideViews();
+		inactive();
+		$('#welcomeNav').addClass('navActive');
 		$('#welcome').show();
 	});
 	$('#manageRulesNav').click(function(){
 		hideViews();
+		inactive();
+		$('#manageRulesNav').addClass('navActive');
 		$('#manageRules').show();
+	});
+	$('#addRule').click(function(){
+		hideViews();
+		$('#addRules').show();
 	});
 	$('.editRule').click(function(){
 		hideViews();
@@ -26,6 +39,8 @@ $(function() {
 	});
 	$('#myServicesNav').click(function(){
 		hideViews();
+		inactive();
+		$('#myServicesNav').addClass('navActive');
 		$('#myServices').show();
 	});
 

@@ -12,45 +12,103 @@
 		<div id="container" align="center">
 			<div id="appMain">
 				<div id="lefNav">
+					<img id="logo" src="images/happyBucket.png">
 					<a name="welcome" id="welcomeNav" class="navigation">Welcome</a>
 					<a name="rules" id="manageRulesNav" class="navigation">Manage Rules</a>
 					<a name="services" id="myServicesNav" class="navigation">My Services</a>
 				</div>
 				<div id="mainContent">
 					<div id="welcome" class="contentView">
-					Welcome to Happy Bucket
+						<span id="welcomeTitle">Welcome to Happy Bucket</span>
+						<span id="welcomeText">
+							Happy Bucket is a glorious service created to triumph over evil clutter on your PC. With this magnificent application, you can magically send an infinite amount of files to a variety of cloud services with a simple drag and drop. Try it out, it's fun and easy!
+						</span>
 					</div>
 					
 					<div id="manageRules" class="contentView">
-						<div class="ruleContainer">
-							<div class="ruleTitle">
-							Rule Title
-							</div>
-							<div class="ruleOptions">
-								<a class="editRule">Edit</a>
-								<a class="removeRule">Remove</a>
-							</div>
+						<div id="ruleDescription">
+							Rules can be applied to folders on your PC. Happy Bucket will use the rules you create to magically send files to your cloud services. 
 						</div>
-						<div class="ruleContainer">
-							<div class="ruleTitle">
-							Rule Title
+						<a id="addRule">New Rule</a>
+						<div id="ruleList">
+							<div class="ruleContainer">
+								<div class="ruleTitle">
+								Rule Title
+								</div>
+								<div class="ruleOptions">
+									<a class="editRule">Edit</a>
+									<a class="removeRule">Remove</a>
+								</div>
 							</div>
-							<div class="ruleOptions">
-								<a class="editRule">Edit</a>
-								<a class="removeRule">Remove</a>
+							<div class="ruleContainer">
+								<div class="ruleTitle">
+								Rule Title
+								</div>
+								<div class="ruleOptions">
+									<a class="editRule">Edit</a>
+									<a class="removeRule">Remove</a>
+								</div>
 							</div>
+							<div class="ruleContainer">
+								<div class="ruleTitle">
+								Rule Title
+								</div>
+								<div class="ruleOptions">
+									<a class="editRule">Edit</a>
+									<a class="removeRule">Remove</a>
+								</div>
+							</div>
+							<div class="ruleContainer">
+								<div class="ruleTitle">
+								Rule Title
+								</div>
+								<div class="ruleOptions">
+									<a class="editRule">Edit</a>
+									<a class="removeRule">Remove</a>
+								</div>
+							</div>
+							<div class="ruleContainer">
+								<div class="ruleTitle">
+								Rule Title
+								</div>
+								<div class="ruleOptions">
+									<a class="editRule">Edit</a>
+									<a class="removeRule">Remove</a>
+								</div>
+							</div>
+							
 						</div>
 					</div>
 					
 					<div id="addRules" class="contentView">
 						<div id="addRuleContainer">
 							<form id="ruleForm">
-								<p><span>Rule Name</span></p>
-								<p><input type="text" id="ruleName"></p>
-								<p><span>Select a folder to apply this rule:</span></p>
-								<input type="button" id="folderBrowse" value="Browse">
-								<p><span>Specify a service for each file type:</span></p>
-								
+								<table id="editRuleTable">
+									<tr>
+										<td>Enter a title for your rule</td>
+									</tr>
+									<tr>
+										<td><input type="text" id="ruleName" placeholder="Unitled Rule"></td>
+									</tr>
+									<tr>
+										<td>Select a folder to apply this rule</td>
+									</tr>
+									<tr>
+										<td><input type="button" id="folderBrowse" value="Browse"></td>
+									</tr>
+									<tr>
+										<td>Specify a service for each file type</td>
+									</tr>
+									<tr>
+										<td><input type="button" id="documentService" value="Documents"></td>
+									</tr>
+									<tr>
+										<td><input type="button" id="imageService" value="Images"></td>	
+									</tr>
+									<tr>
+										<td><input type="button" id="videoService" value="Videos"></td>
+									</tr>
+								</table>								
 							</form>
 						</div>
 					</div>
@@ -80,7 +138,7 @@
 			</div>
 		</div>	
 	</body>
-
+	
 	<script src="js/air_aliases.js"></script>
 	<script src="shitbucket.swf" type="application/x-shockwave-flash"></script>
 	<script src="js/jquery.js"></script>
@@ -91,13 +149,14 @@
 
 	 <script> 
         function runASFunction(){ 
-			document.write("sdfghy");
             var libraryObject = new window.runtime.shitbucket;
 			libraryObject.accessDOM(window);
         }
 		function updateFile(filename, svc) {
 			//send filename to svc
+			air.trace(svc);
+			//document.getElementById("welcome").innerHTML = filename;
 		}
     </script> 
 	
-</html> 
+</html>  
