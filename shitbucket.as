@@ -20,39 +20,46 @@
 		
 		public function shitbucket() {}
 
-		public function configure(configFile:String) {
+		public function configure(configFile:String):Boolean {
 			trace("configuring");
-			var configf = File.applicationDirectory.resolvePath(configFile); 
-			var fileStream = new FileStream();
-			fileStream.open(configf, FileMode.READ); 
-			var config:XML = XML(fileStream.readUTFBytes(fileStream.bytesAvailable)); 
-			fileStream.close();
-			//parse config.xml
-			rules = new Array();
-			dirs = new Array();
-			var tdirlistings = new Array();
-			dirlistings = new Array();
-			for(var i = 0; i < config.rules.rule.length(); i++) {
-				rules[config.rules.rule[i].type.toString()] = config.rules.rule[i].svc.toString();
-			}
-			for(var j = 0; j < config.dirs.dir.length(); j++) {
-				dirs[j] = config.dirs.dir[j].toString();
-				tdirlistings[dirs[j]] = (new File(dirs[j])).getDirectoryListing();
-				dirlistings[dirs[j]] = new Array();
-				for(var k = 0; k < tdirlistings[dirs[j]].length; k++) {
-					//for each file in tdirlistings[directory] add an array in dirlistings[directory]
-					//dirlistings[dirs[j]][k] = new Array();//set this directory's file to an array
-					//associative array; this directory by name's file by name = this directory's edit date
-					//directories->directory->tempfile = new array
-					dirlistings[dirs[j]][tdirlistings[dirs[j]][k].name] = tdirlistings[dirs[j]][k].modificationDate.getTime();
+			var configf = File.applicationStorageDirectory.resolvePath(configFile); 
+			if(configf.exists) {
+				var fileStream = new FileStream();
+				fileStream.open(configf, FileMode.READ); 
+				var config:XML = XML(fileStream.readUTFBytes(fileStream.bytesAvailable)); 
+				fileStream.close();
+				//parse config.xml
+				rules = new Array();
+				dirs = new Array();
+				var tdirlistings = new Array();
+				dirlistings = new Array();
+				/*for(var i = 0; i < config.rules.rule.length(); i++) {
+					rules[config.rules.rule[i].type.toString()] = config.rules.rule[i].svc.toString();
+				}*/
+				for(var j = 0; j < config.dirs.dir.length(); j++) {
+					dirs[j] = config.dirs.dir[j].toString();
+					tdirlistings[dirs[j]] = (new File(dirs[j])).getDirectoryListing();
+					dirlistings[dirs[j]] = new Array();
+					for(var k = 0; k < tdirlistings[dirs[j]].length; k++) {
+						//for each file in tdirlistings[directory] add an array in dirlistings[directory]
+						//dirlistings[dirs[j]][k] = new Array();//set this directory's file to an array
+						//associative array; this directory by name's file by name = this directory's edit date
+						//directories->directory->tempfile = new array
+						dirlistings[dirs[j]][tdirlistings[dirs[j]][k].name] = tdirlistings[dirs[j]][k].modificationDate.getTime();
+					}
 				}
+				return true;
 			}
+			return false;
 		}
 		
-		private function init() {
+		public function init() {
 			//start timer to check directories
 			trace("initializing");
-			configure("config.xml");
+			if(!configure("config.xml")) {
+				trace("config.xml does not exist. exiting monitor daemon.");
+				return;
+			}
 			var time:Timer = new Timer(2000);
 			time.addEventListener("timer", checkdirs);
 			time.start();
