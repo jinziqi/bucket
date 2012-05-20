@@ -3,12 +3,25 @@ var config = 'facebookConfig.txt';
 var access_token = 0;
 var Facebook = {
 	//return false if unsuccessful
-	upload:function(path)
+	upload:function(path, type)
 	{
-		  if(access_token == 0)
-		  	 access_token = Facebook.getAccessToken();
-		
-		  url = "https://graph.facebook.com/me/photos?access_token=" + access_token;
+		  //if(access_token == 0)
+		  access_token = Facebook.getAccessToken();
+		  //This will need to be updated to expand and handle more document types
+		  var extension = path.substr( (path.lastIndexOf('.') +1) );
+		  var params = "";
+		  if(extension == 'jpg')
+		  {
+			url = "https://graph.facebook.com/me/photos?access_token=" + access_token;
+			params = "message=happybucket";
+		  }
+		  else
+		  {
+			var video_title = "happybucket";
+			var video_desc = "happybucket";
+			url = "https://graph-video.facebook.com/me/videos?access_token=" + access_token;
+			params = " title=" + video_title + "&description=" . video_desc + " ";
+		  }
 		  boundary = '--------------======-------------------AaB03x';
 
 		  request = new air.URLRequest(url);
@@ -16,7 +29,7 @@ var Facebook = {
 		  request.contentType = 'multipart/form-data, boundary='+boundary;
 		  //request.shouldCacheResponse = false;
 		  request.method='POST';
-		  request.data = " message=test \r\n";
+		  request.data = params + " \r\n";
 		  buffer = new air.ByteArray();
 
 		  file = new air.File(path);
