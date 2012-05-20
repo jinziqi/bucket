@@ -1,11 +1,11 @@
 ﻿//Requires Jquery
 var config = 'facebookConfig.txt';
-var access_token = false;
+var access_token = 0;
 var Facebook = {
 	//return false if unsuccessful
 	upload:function(path)
 	{
-		  if(access_token)
+		  if(access_token == 0)
 		  	 access_token = Facebook.getAccessToken();
 		
 		  url = "https://graph.facebook.com/me/photos?access_token=" + access_token;
@@ -115,8 +115,9 @@ var fh = {
 	read:function(fileName)
 	{
 		var prefsFile = fh.get(fileName);
-		var stream = new air.FileStream();
+		var data = "";
 		if (prefsFile.exists) {
+			var stream = new air.FileStream();
 			stream.open(prefsFile, air.FileMode.READ);
 			data = stream.readUTFBytes(stream.bytesAvailable);
 			stream.close();
