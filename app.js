@@ -8,6 +8,9 @@ function configure() {
 	libraryObject.configure("config.xml");
 }
 function updateFile(filename, svc) {
+	if(air.NativeApplication.supportsDockIcon){
+		filename=filename.replace("\\","/");
+	}
 	//send filename to svc
 	if(svc == 'Facebook') {
 		air.trace('Uploading to facebook');
