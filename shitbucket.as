@@ -21,6 +21,7 @@
 		}
 		
 		private function init() {
+			trace("SDFG");
 			//load config.xml
 			var configf = File.applicationDirectory.resolvePath("config.xml"); 
 			var fileStream = new FileStream();
@@ -75,12 +76,15 @@
 			//get file type, check if a rule exists for it
 			var svc = rules[filename.split(".").pop()];
 			if(svc) {
+				trace("DSZG");
 				//call js to upload file
 			}
 		}
-		public function accessDOM(window:*):void { 
-			jsWindow = window;
-			init();
-    	}
+		
+		public function accessDOM(window:*):void {
+			trace("SDEFR");
+			//jsWindow = window;
+			//init();
+		}
 	}
 }
