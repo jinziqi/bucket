@@ -92,21 +92,17 @@ $(function() {
 	function createXMLData()
 	{
 		var cr = air.File.lineEnding;
-		prefsXML =   "<?xml version='1.0' encoding='utf-8'?>" + cr
-						+ "<preferences>" + cr 
-						+ "    <windowState" + cr
-						+ "        width = '" + window.outerWidth.toString() + "'" + cr
-						+ "        height = '" + window.outerHeight.toString() + "'" + cr
-						+ "        x = '" + window.screenLeft.toString() + "'" + cr
-						+ "        y = '" + window.screenTop.toString() + "'" + "/>" + cr
-						+ "    <saveDate>"
-						+            new Date().toString() 
-						+     "</saveDate>" + cr
-						+ "</preferences>";
-		document.getElementById("widthField").value = window.outerWidth.toString(); 
-		document.getElementById("heightField").value = window.outerWidth.toString(); 
-		document.getElementById("xPositionField").value = window.screenLeft.toString(); 
-		document.getElementById("yPositionField").value = window.screenTop.toString(); 
+		prefsXML =   "<config>" + cr
+					+ "    <rules>" + cr
+					+ "        <rule>" + cr
+					+ "            <type></type>" + cr
+					+ "            <svc></svc>" + cr
+					+ "        </rule>" + cr
+					+ "    </rules>" + cr
+					+ "    <dirs>" + cr
+					+ "        <dir></dir>" + cr
+					+ "    </dirs>" + cr
+					+ "</config>";
 	}
 
 	/**
@@ -122,5 +118,5 @@ $(function() {
 		stream.close();
 	}
 
-	xml_init();
+	xml_init();	
 });
