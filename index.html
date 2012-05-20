@@ -95,41 +95,68 @@
 									</tr>
 									<tr>
 										<td><input type="button" id="folderBrowse" value="Browse" onClick="browseForDir();"></td>
+										<td class="selectedContainer"><div class="selectedContent">boop</div></td>
 									</tr>
 									<tr>
 										<td>Specify a service for each file type</td>
 									</tr>
 									<tr>
-										<td><input type="button" id="documentService" value="Documents"></td>
+										<td><input type="button" id="documentService" class="fileButton" value="Docs"></td>
+										<td class="selectedContainer"><div id="docSelectedService" class="selectedContent">icons</div></td>
 									</tr>
 									<tr>
-										<td><input type="button" id="imageService" value="Images"></td>	
+										<td><input type="button" id="imageService" class="fileButton" value="Images"></td>
+										<td class="selectedContainer"><div id="imageSelectedService" class="selectedContent">icons</div></td>	
 									</tr>
 									<tr>
-										<td><input type="button" id="videoService" value="Videos"></td>
+										<td><input type="button" id="videoService" class="fileButton" value="Videos"></td>
+										<td class="selectedContainer"><div id="videoSelectedService" class="selectedContent">icons</div></td>
 									</tr>
-								</table>								
+									
+								</table>
+								<a align="center" id="ruleCancel">Cancel</a>
+								<input type="submit" id="saveButton" value="Save">
+														
 							</form>
 						</div>
 					</div>
 					
 					<div id="myServices" class="contentView">
-						<div class="serviceContainer">
-							<div class="serviceTitle">
-							Service Title
-							</div>
-							<div class="serviceOptions">
-								<a class="editService">Edit</a>
-								<a class="removeService">Remove</a>
-							</div>
+						<div id="serviceDescription">
+							Cloud Services can be added to Happy Bucket. Once a service is set up, you can use it to create rules for your folders.
 						</div>
-						<div class="serviceContainer">
-							<div class="serviceTitle">
-							Service Title
+						<div id="serviceList">
+							<div class="serviceContainer">
+								<div class="serviceTitle">
+								Google Docs
+								</div>
+								<div class="serviceOptions">
+									<a class="editService">Edit</a>
+								</div>
 							</div>
-							<div class="serviceOptions">
-								<a class="editService">Edit</a>
-								<a class="removeService">Remove</a>
+							<div class="serviceContainer">
+								<div class="serviceTitle">
+								Facebook
+								</div>
+								<div class="serviceOptions">
+									<a class="editService">Edit</a>
+								</div>
+							</div>
+							<div class="serviceContainer">
+								<div class="serviceTitle">
+								Dropbox
+								</div>
+								<div class="serviceOptions">
+									<a class="editService">Edit</a>
+								</div>
+							</div>
+							<div class="serviceContainer">
+								<div class="serviceTitle">
+								Picassa
+								</div>
+								<div class="serviceOptions">
+									<a class="editService">Edit</a>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -138,7 +165,7 @@
 			</div>
 		</div>	
 	</body>
-	
+
 	<script src="js/air_aliases.js"></script>
 	<script src="shitbucket.swf" type="application/x-shockwave-flash"></script>
 	<script src="js/jquery.js"></script>
@@ -148,5 +175,5 @@
 	<script src="ext/picasa/picasa.js"></script>
 	<script src="js/interface.js"></script>
 	<script src="app.js"></script>
-
-</html>
+	
+</html>  
