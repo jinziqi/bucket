@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <application xmlns="http://ns.adobe.com/air/application/2.0">
 
-  <id>shitbucket</id>
+  <id>happybucket</id>
 
   <version>1.0</version>
 
-  <filename>shitbucket</filename>
+  <filename>happybucket</filename>
 
   <description/>
 
   
 
+
+
+  
+
 <!-- To localize the description, use the following format for the description element.<description><text xml:lang="en">English App description goes here</text><text xml:lang="fr">French App description goes here</text><text xml:lang="ja">Japanese App description goes here</text></description>-->
 
-  <name>shitbucket</name>
+  <name>happybucket</name>
+
+  
+
+
 
   
 
@@ -22,7 +30,7 @@
   <copyright/>
 
   <initialWindow>
-    <content>shitbucket.swf</content>
+    <content>happybucket.swf</content>
     <systemChrome>standard</systemChrome>
     <transparent>false</transparent>
     <visible>true</visible>
@@ -39,6 +47,8 @@
   <customUpdateUI>false</customUpdateUI>
 
   <allowBrowserInvocation>false</allowBrowserInvocation>
+
+
 
 
 </application>

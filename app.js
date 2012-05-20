@@ -1,6 +1,6 @@
 var libraryObject;
 function runASFunction(){ 
-    libraryObject = new window.runtime.shitbucket;
+    libraryObject = new window.runtime.happybucket;
 	libraryObject.accessDOM(window);
 	
 }

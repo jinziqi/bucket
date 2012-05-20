@@ -10,14 +10,14 @@
 	import flash.xml.*;
 	import flash.filesystem.FileStream;
 	import flash.filesystem.FileMode;
-	public class shitbucket extends MovieClip {
+	public class happybucket extends MovieClip {
 		
 		private var dirlistings:Array;
 		private var dirs:Array;
 		private var jsWindow:*;
 		private var config:XML;
 		
-		public function shitbucket() {}
+		public function happybucket() {}
 
 		public function configure(configFile:String):Boolean {
 			trace("configuring");
