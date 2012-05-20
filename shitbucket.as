@@ -15,8 +15,12 @@
 		var dirlistings:Array;
 		var dirs:Array;
 		var rules:Array;
+		var jsWindow;
 		
 		public function shitbucket() {
+		}
+		
+		private function init() {
 			//load config.xml
 			var configf = File.applicationDirectory.resolvePath("config.xml"); 
 			var fileStream = new FileStream();
@@ -71,11 +75,12 @@
 			//get file type, check if a rule exists for it
 			var svc = rules[filename.split(".").pop()];
 			if(svc) {
-				trace("YESSSSSSSSS");
 				//call js to upload file
 			}
 		}
-		/*private function onLoaded(e:Event) {
-		}*/
+		public function accessDOM(window:*):void { 
+			jsWindow = window;
+			init();
+    	}
 	}
 }
