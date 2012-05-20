@@ -16,6 +16,40 @@ $(function() {
 		prefsFile = air.File.applicationStorageDirectory;
 		prefsFile = prefsFile.resolvePath("config.xml"); 
 		readXML();
+
+		$('#saveButton').click(function(){
+			air.trace('save');
+			var rule_id = $('#ruleName').attr('rule_id');
+
+			if(rule_id == '') {
+				rule_id = appDirs.length;
+				appDirs[rule_id] = new Object;
+			}	
+
+			air.trace(rule_id);
+
+			appDirs[rule_id].title = $('#ruleName').val();
+			appDirs[rule_id].folder = $('#selected_directory').html();
+			var doc_rule = new Object;
+			doc_rule.type = 'doc';
+			doc_rule.svc = $('#docSelectedService').html();
+			appDirs[rule_id].rules = new Array;
+			appDirs[rule_id].rules.push(doc_rule);
+
+			var doc_rule = new Object;
+			doc_rule.type = 'img';
+			doc_rule.svc = $('#imageSelectedService').html();
+			appDirs[rule_id].rules.push(doc_rule);
+
+			var doc_rule = new Object;
+			doc_rule.type = 'vid';
+			doc_rule.svc = $('#videoSelectedService').html();
+			appDirs[rule_id].rules.push(doc_rule);
+
+			saveData();
+			loadDataIntoDom();
+			$('#manageRulesNav').click();
+		});
 	}
  
 	/**
@@ -54,15 +88,18 @@ $(function() {
 		for(var i = 0; i<dirs.length; i++) {
 			if(dirs[i]) {
 				var dir_config = new Object;
-				dir_config.folder = dirs[i].getElementsByTagName('folder')[0].firstChild.nodeValue;
+				if(dirs[i].getElementsByTagName('folder')[0].firstChild)
+					dir_config.folder = dirs[i].getElementsByTagName('folder')[0].firstChild.nodeValue;
 				dir_config.title = dirs[i].getElementsByTagName('title')[0].firstChild.nodeValue;
 				dir_config.rules = new Array;
 				var rules = dirs[i].getElementsByTagName('rule');
 				for(var j = 0; j<rules.length; j++) {
 					if(rules[i]) {
 						var rule_config = new Object;
-						rule_config.type = rules[j].getElementsByTagName('type')[0].firstChild.nodeValue;
-						rule_config.svc = rules[j].getElementsByTagName('svc')[0].firstChild.nodeValue;
+						if(rules[j].getElementsByTagName('type')[0])
+							rule_config.type = rules[j].getElementsByTagName('type')[0].firstChild.nodeValue;
+						if(rules[j].getElementsByTagName('svc')[0])
+							rule_config.svc = rules[j].getElementsByTagName('svc')[0].firstChild.nodeValue;
 
 						dir_config.rules.push(rule_config);
 					}
@@ -95,8 +132,9 @@ $(function() {
 
 	function loadDataIntoDom()
 	{
+		var rule_html = '';
 		for(var i=0; i<appDirs.length; i++) {
-			var rule_html = '<div class="ruleContainer">';
+			rule_html += '<div class="ruleContainer">';
 			rule_html += '<div class="ruleTitle">';
 			rule_html += appDirs[i].title;
 			rule_html += '</div>';
@@ -107,12 +145,32 @@ $(function() {
 			rule_html += '</div>';
 		}
 		$('#ruleList').html(rule_html);
+
 		$('.editRule').click(function(){
 			hideViews();
 			$('#addRules').show();
 			var rule_id = $(this).attr('rule_id');
+			$('#ruleName').attr('rule_id', rule_id);
 			$('#ruleName').val(appDirs[rule_id].title);
+			$('#selected_directory').html(appDirs[rule_id].folder);
+			for(var i=0; i<appDirs[rule_id].rules.length; i++) {
+				if(appDirs[rule_id].rules[i].type == 'doc') {
+					$('#docSelectedService').html(appDirs[rule_id].rules[i].svc);
+				}
+			}
+			
 		});
+
+		$('.removeRule').click(function(){
+
+			var rule_id = $(this).attr('rule_id');
+			appDirs.splice(rule_id, 1);
+
+			saveData();
+			loadDataIntoDom();
+			$('#manageRulesNav').click();
+		});
+
 	}
 
 	/**

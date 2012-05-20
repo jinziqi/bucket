@@ -32,6 +32,12 @@ $(function() {
 	$('#addRule').click(function(){
 		hideViews();
 		$('#addRules').show();
+		$('#ruleName').attr('rule_id', '');
+		$('#ruleName').val('');
+		$('#selected_directory').html('');
+		$('#docSelectedService').html('icon');
+		$('#imageSelectedService').html('icon');
+		$('#videoSelectedService').html('icon');
 	});
 	$('.editRule').click(function(){
 		hideViews();
@@ -42,6 +48,10 @@ $(function() {
 		inactive();
 		$('#myServicesNav').addClass('navActive');
 		$('#myServices').show();
+	});
+
+	$('#ruleCancel').click(function(){
+		$('#manageRulesNav').click();
 	});
 
 });

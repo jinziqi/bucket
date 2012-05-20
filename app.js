@@ -16,6 +16,6 @@ function browseForDir(){
 	file.addEventListener(air.Event.SELECT, dirSelected); 
 	file.browseForDirectory("Select a directory"); 
 	function dirSelected(event) { 
-		//document.getElementById('selectedDir').innerHTML = file.nativePath;
+		document.getElementById('selected_directory').innerHTML = file.nativePath;
 	}
 }
