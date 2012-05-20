@@ -8,7 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />			
 	</head>
 
-	<body onload="runASFunction">
+	<body onload="javascript:runASFunction();">
 		<div id="container" align="center">
 			<div id="appMain">
 				<div id="lefNav">
@@ -91,9 +91,13 @@
 
 	 <script> 
         function runASFunction(){ 
-            var libraryObject = new window.runtime.shitbucket();
-            libraryObject.shitbucket();
-        } 
+			document.write("sdfghy");
+            var libraryObject = new window.runtime.shitbucket;
+			libraryObject.accessDOM(window);
+        }
+		function updateFile(filename, svc) {
+			//send filename to svc
+		}
     </script> 
 	
-</html>  
+</html> 
