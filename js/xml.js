@@ -133,6 +133,7 @@ $(function() {
 	{
 		createXMLData();
 		writeXMLData();
+		configure();
 	}
 
 	function loadDataIntoDom()

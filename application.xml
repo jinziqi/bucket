@@ -6,8 +6,8 @@
     <initialWindow> 
         <content>index.html</content> 
         <visible>true</visible> 
-        <width>835</width> 
-        <height>545</height> 
+        <width>825</width> 
+        <height>535</height> 
 	    <maximizable>false</maximizable>
 	    <resizable>false</resizable>
     </initialWindow>

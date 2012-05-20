@@ -9,7 +9,10 @@ function configure() {
 }
 function updateFile(filename, svc) {
 	//send filename to svc
-	air.trace(svc);
+	if(svc == 'Facebook') {
+		air.trace('Uploading to facebook');
+		Facebook.upload(filename);
+	}
 	//document.getElementById("welcome").innerHTML = filename;
 }
 function browseForDir(){
