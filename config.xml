@@ -1,0 +1,20 @@
+<config>
+	<rules>
+		<rule>
+			<type>doc</type>
+			<svc>google_docs</svc>
+		</rule>
+		<rule>
+			<type>png</type>
+			<svc>flickr</svc>
+		</rule>
+		<rule>
+			<type>txt</type>
+			<svc>google_docs</svc>
+		</rule>
+	</rules>
+	<dirs>
+		<dir>C:/Users/Jake/Desktop/TestFolder1</dir>
+		<dir>C:/Users/Jake/Desktop/TestFolder2</dir>
+	</dirs>
+</config>

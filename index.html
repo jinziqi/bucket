@@ -1,14 +1,68 @@
-<html> 
-<head> 
-    <title>Hello World</title> 
-    <script type="text/javascript" src="AIRAliases.js"></script> 
-    <script type="text/javascript"> 
-        function appLoad(){ 
-            air.trace("Hello World"); 
-        }  
-    </script> 
-</head> 
-<body onLoad="appLoad()"> 
-    <h1>Hello World</h1> 
-</body> 
-</html>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>AirBoilerplate.js</title>
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="css/screen.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />			
+	</head>
+
+	<body>
+		<div id="container" align="center">
+			<div id="appMain">
+				<div id="lefNav">
+					<a name="welcome" id="welcomeNav" class="navigation">Welcome</a>
+					<a name="rules" id="rulesNav" class="navigation">Manage Rules</a>
+					<a name="services" id="servicesNav" class="navigation">My Services</a>
+				</div>
+				<div id="mainContent">
+					
+					<div id="manageRules" class="contentView">
+						<div class="ruleContainer">
+							<div class="ruleTitle">
+							Rule Title
+							</div>
+							<div class="ruleOptions">
+								<a class="editRule">Edit</a>
+								<a class="removeRule">Remove</a>
+							</div>
+						</div>
+						<div class="ruleContainer">
+							<div class="ruleTitle">
+							Rule Title
+							</div>
+							<div class="ruleOptions">
+								<a class="editRule">Edit</a>
+								<a class="removeRule">Remove</a>
+							</div>
+						</div>
+					</div>
+					
+					<div id="addRules" class="contentView">
+						<div id="addRuleContainer">
+							<form id="ruleForm">
+								<span>Name:</span>
+								<input type="text" id="ruleName">
+								<span>Select a folder to apply this rule:</span>
+								<input type="button" value="Browse">
+								<span>Specify a service for each file type:</span>
+								
+							</form>
+						</div>
+					</div>
+					
+					<div id="myServices" class="contentView">
+					</div>
+					
+				</div>
+			</div>
+		</div>	
+	</body>
+	
+	<script src="js/jquery.js"></script>
+	<script src="js/air_aliases.js"></script>
+	<script src="js/chrome.js"></script>
+	<script src="js/xml.js"></script>
+	<script src="js/interface.js"></script>
+</html>  

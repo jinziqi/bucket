@@ -1,0 +1,74 @@
+/* top right bottom left */	
+
+#container {
+    height: 100%;
+    width: 100%;
+    background: #f8f8f8;
+    
+}
+#appMain {
+    height: 500px;
+    width: 810px;
+    border-width: 1 2 2 2;
+    -webkit-border-image: url(../images/workspace.png) 1 2 2 2 stretch stretch;	
+}
+#lefNav {
+	padding-top: 60px;
+	width: 200px;
+	float: left;
+}
+.navigation {
+	display: block;
+	padding: 15px 0px 0px 0px;
+	height: 30px;
+	width: 100%;
+	cursor: pointer;
+	font-size: 18px;
+	color: #333;
+}
+
+.contentView {
+	display: none;
+	padding: 20px;
+}
+
+#mainContent {
+	height: 100%;
+	width: 610px;
+	float: right;
+}
+#grip {
+    position: absolute;
+    right: 8px;
+    bottom: 12px;	
+}
+.controls {
+	position:absolute;
+	top:20px;
+	right:15px;
+	font-size:11px;
+}
+#minimize, 
+#close {
+	display:inline-block;
+	margin-left:4px;
+	color:#333;
+	padding:5px 10px 5px 10px;
+	border:1px solid #333;
+    width:55px;
+	text-align:center;	
+}
+#minimize span, 
+#close span {
+	display:inline-block;
+	padding-left:10px;
+}
+#add {
+    right: 80px;
+    top: 15px;
+}
+#add img {
+    float: left;
+    margin-left: 11px;
+    margin-top: 11px;
+}
