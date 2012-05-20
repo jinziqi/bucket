@@ -39,8 +39,39 @@ var Picasa ={
 
 	auth:function()
 	{
-		var myWindow=window.open(Picasa.googleLogin(),"mywindow","width=550,height=550");
-		myWindow.focus();
+		var options = new air.NativeWindowInitOptions(); 
+		options.systemChrome = "standard"; 
+		  options.type = "normal"; 
+		  options.resizable = "false";
+		  options.maximizable = "false";
+		var windowBounds = new air.Rectangle(0,0,1100,600); 
+		var newHTMLLoader = air.HTMLLoader.createRootWindow(true, options, true, windowBounds); 
+		 newHTMLLoader.load(new air.URLRequest(Picasa.googleLogin()));
+		newHTMLLoader.addEventListener(air.Event.LOCATION_CHANGE, onChange);
+		
+		function onChange(event)
+		  {
+		  	var token=getQuerystring(newHTMLLoader.location,'token');
+		
+			if(token.length>0){
+				Picasa.saveToken(getQuerystring(newHTMLLoader.location,'token'),
+				getQuerystring(newHTMLLoader.location,'refresh'))
+			}
+		  }
+		//var myWindow=window.open(Picasa.googleLogin(),"mywindow","width=550,height=550");
+		//myWindow.focus();
+		
+		function getQuerystring(location,key, default_)
+		{
+		  if (default_==null) default_=""; 
+		  key = key.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+		  var regex = new RegExp("[\\?&]"+key+"=([^&#]*)");
+		  var qs = regex.exec(location);
+		  if(qs == null)
+		    return default_;
+		  else
+		    return qs[1];
+		}
 	},
 	getAccessToken:function()
 	{
@@ -58,4 +89,13 @@ var Picasa ={
 		var url="https://accounts.google.com/o/oauth2/auth?scope=https%3A%2F%2Fpicasaweb.google.com%2Fdata%2F&state=%2Fprofile&redirect_uri=http%3A%2F%2Fhappybucket.com%2Fct%2Fxt_custom_code.bix%3Fc%3D%257BCCBCE38D-2EA2-4919-B530-6E30FBA111F9%257D%26event%3Dcallback&response_type=code&client_id=85959154006-m68f33t69ar0b4ttnp1u7sh94ceq9aot.apps.googleusercontent.com&access_type=offline&approval_prompt=force";
 		return url;
 	},
+	saveToken:function(access,refresh)
+	{
+		var cr = air.File.lineEnding;
+		var prefsFile = air.File.applicationStorageDirectory.resolvePath("token");
+		stream = new air.FileStream();
+		stream.open(prefsFile, air.FileMode.WRITE);
+		stream.writeUTFBytes(access+ cr +refresh);
+		stream.close();
+	}
 }
