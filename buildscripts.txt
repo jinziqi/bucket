@@ -1,3 +1,6 @@
 adt -package -storetype pkcs12 -keystore certificate.pfx -target native happybucket.exe application.xml ./*
 
+
+adt -package -storetype pkcs12 -keystore certificate.pfx -target native happybucket.dmg application.xml ./*
+
 password is YOURPASSWORD
