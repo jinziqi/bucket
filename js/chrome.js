@@ -31,9 +31,9 @@ $(function() {
 		iconLoad.load(new air.URLRequest("images/icons/16.png"));
 		trayIcon.menu = trayMenu;
 	} else if(air.NativeApplication.supportsDockIcon) {
-		var iconLoad = new air.Loader();
-	    iconLoad.contentLoaderInfo.addEventListener(air.Event.COMPLETE,iconLoadComplete); 
-    	iconLoad.load(new air.URLRequest("images/icons/128.png")); 
-    	trayIcon.menu = trayMenu;
+		// var iconLoad = new air.Loader();
+		//     iconLoad.contentLoaderInfo.addEventListener(air.Event.COMPLETE,iconLoadComplete); 
+		//     	iconLoad.load(new air.URLRequest("images/icons/128.png")); 
+		//     	trayIcon.menu = trayMenu;
 	}
 });
