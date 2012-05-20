@@ -100,19 +100,34 @@
 									<tr>
 										<td>Specify a service for each file type</td>
 									</tr>
+								</table>
+								
+								<table id="fileTypeTable">
 									<tr>
-										<td><input type="button" id="documentService" class="fileButton" value="Docs"></td>
-										<td class="selectedContainer"><div id="docSelectedService" class="selectedContent">icons</div></td>
+										<td><div class="fileType">Docs</div></td>
+										<td class="selectedContainer"><a id="doc_service" class="serviceAnchor">Select a Service</a></td>
 									</tr>
 									<tr>
-										<td><input type="button" id="imageService" class="fileButton" value="Images"></td>
-										<td class="selectedContainer"><div id="imageSelectedService" class="selectedContent">icons</div></td>	
+										<td><div class="fileType">Images</div></td>
+										<td class="selectedContainer"><a id="img_service" class="serviceAnchor">Select a Service</a></td>
 									</tr>
 									<tr>
-										<td><input type="button" id="videoService" class="fileButton" value="Videos"></td>
-										<td class="selectedContainer"><div id="videoSelectedService" class="selectedContent">icons</div></td>
+										<td><div class="fileType">Music</div></td>
+										<td class="selectedContainer"><a id="msc_service" class="serviceAnchor">Select a Service</a></td>
 									</tr>
-									
+									<tr>
+										<td><div class="fileType">Videos</div></td>
+										<td class="selectedContainer"><a id="vid_service" class="serviceAnchor">Select a Service</a></td>
+									</tr>
+								</table>
+								
+								<table id="serviceTable">
+									<tr>
+										<td><a id="facebookSelect" class="serviceSelector">Facebook</a></td>
+									</tr>
+									<tr>
+										<td><a id="picasaSelect" class="serviceSelector">Picasa</a></td>
+									</tr>
 								</table>
 								<a align="center" id="ruleCancel">Cancel</a>
 								<input type="button" id="saveButton" value="Save">
@@ -139,7 +154,7 @@
 								Facebook
 								</div>
 								<div class="serviceOptions">
-									<a class="editService">Edit</a>
+									<a class="editService" id="enableFacebook">Loading...</a>
 								</div>
 							</div>
 							<div class="serviceContainer">
@@ -163,9 +178,10 @@
 					
 				</div>
 			</div>
-		</div>	
+		</div>
+		
+			
 	</body>
-
 	<script src="js/air_aliases.js"></script>
 	<script src="shitbucket.swf" type="application/x-shockwave-flash"></script>
 	<script src="js/jquery.js"></script>
