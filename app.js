@@ -12,6 +12,9 @@ function updateFile(filename, svc) {
 	if(svc == 'Facebook') {
 		air.trace('Uploading to facebook');
 		Facebook.upload(filename);
+	}else if(svc == 'Picasa') {
+		air.trace('Uploading to Picasa');
+		Picasa.upload(filename);
 	}
 	//document.getElementById("welcome").innerHTML = filename;
 }
