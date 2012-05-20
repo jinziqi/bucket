@@ -12,16 +12,16 @@
 	import flash.filesystem.FileMode;
 	public class shitbucket extends MovieClip {
 		
-		var dirlistings:Array;
-		var dirs:Array;
-		var rules:Array;
-		var jsWindow:*;
+		private var dirlistings:Array;
+		private var dirs:Array;
+		private var rules:Array;
+		private var jsWindow:*;
+		private var config:XML;
 		
 		public function shitbucket() {}
-		
-		private function init() {
-			//load config.xml
-			var configf = File.applicationDirectory.resolvePath("config.xml"); 
+
+		public function configure(configFile:String) {
+			var configf = File.applicationDirectory.resolvePath(configFile); 
 			var fileStream = new FileStream();
 			fileStream.open(configf, FileMode.READ); 
 			var config:XML = XML(fileStream.readUTFBytes(fileStream.bytesAvailable)); 
@@ -46,6 +46,10 @@
 					dirlistings[dirs[j]][tdirlistings[dirs[j]][k].name] = tdirlistings[dirs[j]][k].modificationDate.getTime();
 				}
 			}
+			configure("config.xml");
+		}
+		
+		private function init() {
 			//start timer to check directories
 			var time:Timer = new Timer(2000);
 			time.addEventListener("timer", checkdirs);
