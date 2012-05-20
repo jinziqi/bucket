@@ -1,19 +1,19 @@
 var Picasa ={
 	upload:function(path)
 	{
-		  url = "https://picasaweb.google.com/data/feed/api/user/default/albumid/default?access_token=ya29.AHES6ZSAMbcxzZgLATb9Df1t53ywtGnNzAVNmFbr2GKC7NBJpLZZ1g";
+		  url = "https://picasaweb.google.com/data/feed/api/user/default/albumid/default?access_token=ya29.AHES6ZRxsM3xZKsBIYT7eZa9EaqIyKyq7L_7nuLJzqsBsiA";
 
 		  boundary = '--------------======-------------------AaB03x';
 
 		  request = new air.URLRequest(url);
 		  request.useCache = false;
-		  request.contentType = 'image/png';
+		  request.contentType = getExtension(path);
 		  //request.shouldCacheResponse = false;
 		  request.method='POST';
 
 		  buffer = new air.ByteArray();
 
-		  file = new air.File("/Users/zjin/Documents/bucket/images/happyBucket.png");
+		  file = new air.File(path);
 
 		  fileStream = new air.FileStream();
 		  fileStream.open(file, air.FileMode.READ);
@@ -22,7 +22,6 @@ var Picasa ={
 		  fileStream.close();
 
 		  buffer.writeBytes(fileContents, 0, fileContents.length);
-
 
 		  request.data = buffer;
 
@@ -33,7 +32,7 @@ var Picasa ={
 		    air.trace( 'error: '+ e.text );
 		  });
 		  loader.addEventListener(air.Event.COMPLETE, function(e){
-		    //air.trace( loader.data );
+		    air.trace( loader.data );
 		  });
 		  loader.load( request );
 	},
