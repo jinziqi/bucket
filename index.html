@@ -18,11 +18,12 @@
 					<a name="services" id="myServicesNav" class="navigation">My Services</a>
 				</div>
 				<div id="mainContent">
-					<div id="welcome" class="contentView">
+					<div id="welcome" class="contentView" align="center">
 						<span id="welcomeTitle">Welcome to Happy Bucket</span>
 						<span id="welcomeText">
 							Happy Bucket is a glorious service created to triumph over evil clutter on your PC. With this magnificent application, you can magically send an infinite amount of files to a variety of cloud services with a simple drag and drop. Try it out, it's fun and easy!
 						</span>
+						<img id="workflow" src="images/arrow.png">
 					</div>
 					
 					<div id="manageRules" class="contentView">
@@ -123,14 +124,20 @@
 								
 								<table id="serviceTable">
 									<tr>
+										<td><a id="googleSelect" class="serviceSelector">Google</a></td>
+									</tr>
+									<tr>
 										<td><a id="facebookSelect" class="serviceSelector">Facebook</a></td>
 									</tr>
 									<tr>
 										<td><a id="picasaSelect" class="serviceSelector">Picasa</a></td>
 									</tr>
+									<tr>
+										<td><a class="serviceSelector">Service 4</a></td>
+									</tr>
 								</table>
 								<a align="center" id="ruleCancel">Cancel</a>
-								<input type="button" id="saveButton" value="Save">
+								<input type="submit" id="saveButton" value="Save">
 														
 							</form>
 						</div>
@@ -154,10 +161,18 @@
 								Picasa
 								</div>
 								<div class="serviceOptions">
-									<a class="editService" onclick="Picasa.auth()">Edit</a>
+									<a class="editService" onclick="Picasa.auth()">Login</a>
 								</div>
 							</div>
-						</div>
+							<!----- div class="serviceContainer">
+								<div class="serviceTitle">
+								SlideShare
+								</div>
+								<div class="serviceOptions">
+									<a class="editService" onclick="Slideshare.auth()">Login</a>
+									<div id="slideshare_auth_window"><input id="slideshare_username"><br><input type="password" id="slideshare_password"><input onClick="Slideshare.saveAuth();" type="button" value="save"></div>
+								</div ---->
+							</div>
 					</div>
 					
 				</div>
@@ -174,6 +189,7 @@
 	<script src="js/file.js"></script>
 	<script src="ext/picasa/picasa.js"></script>
 	<script src="ext/facebook/facebook.js"></script>
+	<script src="ext/slideshare/slideshare.js"></script>
 	<script src="js/interface.js"></script>
 	<script src="app.js"></script>
 	<script src="js/jsOAuth-1.3.4.min.js"></script>

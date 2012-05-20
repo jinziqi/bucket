@@ -455,3 +455,14 @@
     margin-left: 11px;
     margin-top: 11px;
 }
+
+#slideshare_auth_window{
+	display: none;
+	width: 300px;
+	height: 200px;
+	background-color: #FFFFFF;
+	border: 1px solid #000000;
+	position: absolute;
+	top: 40px;
+	left: 20px;
+}
