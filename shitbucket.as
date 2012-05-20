@@ -71,18 +71,10 @@
 			//get file type, check if a rule exists for it
 			var svc = rules[filename.split(".").pop()];
 			if(svc) {
+				//call js to upload file
 			}
 		}
-		/*var html:HTMLLoader = new HTMLLoader();
-					html.load(new URLRequest("index.html"));
-					html.width = stage.stageWidth;
-					html.height = stage.stageHeight;
-					html.addEventListener(Event.COMPLETE, onLoaded);
-					addChild(html);
-				}
-			}
-		}
-		private function onLoaded(e:Event) {
+		/*private function onLoaded(e:Event) {
 		}*/
 	}
 }
