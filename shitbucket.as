@@ -71,7 +71,6 @@
 			//get file type, check if a rule exists for it
 			var svc = rules[filename.split(".").pop()];
 			if(svc) {
-				trace(svc);
 			}
 		}
 		/*var html:HTMLLoader = new HTMLLoader();
