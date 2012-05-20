@@ -15,13 +15,11 @@
 		var dirlistings:Array;
 		var dirs:Array;
 		var rules:Array;
-		var jsWindow;
+		var jsWindow:*;
 		
-		public function shitbucket() {
-		}
+		public function shitbucket() {}
 		
 		private function init() {
-			trace("SDFG");
 			//load config.xml
 			var configf = File.applicationDirectory.resolvePath("config.xml"); 
 			var fileStream = new FileStream();
@@ -76,15 +74,14 @@
 			//get file type, check if a rule exists for it
 			var svc = rules[filename.split(".").pop()];
 			if(svc) {
-				trace("DSZG");
 				//call js to upload file
+				jsWindow.updateFile(filename, svc);
 			}
 		}
 		
 		public function accessDOM(window:*):void {
-			trace("SDEFR");
-			//jsWindow = window;
-			//init();
+			jsWindow = window;
+			init();
 		}
 	}
 }
