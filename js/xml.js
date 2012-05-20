@@ -42,7 +42,7 @@ $(function() {
 			appDirs[rule_id].rules.push(doc_rule);
 
 			var doc_rule = new Object;
-			doc_rule.type = 'mp3';
+			doc_rule.type = 'pptx';
 			doc_rule.svc = $('#msc_service').html();
 			appDirs[rule_id].rules.push(doc_rule);
 
@@ -166,7 +166,7 @@ $(function() {
 				if(appDirs[rule_id].rules[i].type == 'jpg') {
 					$('#img_service').html(appDirs[rule_id].rules[i].svc);
 				}
-				if(appDirs[rule_id].rules[i].type == 'mp3') {
+				if(appDirs[rule_id].rules[i].type == 'pptx') {
 					$('#msc_service').html(appDirs[rule_id].rules[i].svc);
 				}
 				if(appDirs[rule_id].rules[i].type == 'mp4') {

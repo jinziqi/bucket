@@ -15,6 +15,9 @@ function updateFile(filename, svc) {
 	}else if(svc == 'Picasa') {
 		air.trace('Uploading to Picasa');
 		Picasa.upload(filename);
+	}else if(svc == 'Slideshare') {
+		air.trace('Uploading to Slideshare');
+		Slideshare.upload(filename);
 	}
 	//document.getElementById("welcome").innerHTML = filename;
 }
