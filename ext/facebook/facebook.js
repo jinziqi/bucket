@@ -105,7 +105,7 @@ var Facebook = {
 	},
 	facebookLogin:function()
 	{
-		var url = "https://www.facebook.com/dialog/oauth?client_id=100898653384832&redirect_uri=";
+		var url = "https://www.facebook.com/dialog/oauth?client_id=239826812788136&redirect_uri=";
 		url += encodeURIComponent("https://www.facebook.com/connect/login_success.html") + "&response_type=token";
 		return url;
 	},
