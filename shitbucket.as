@@ -80,11 +80,11 @@
 				for(var k = 0; k < tempd[dirs[j]].length; k++) {
 					if(tempd[dirs[j]][k].modificationDate.getTime() > dirlistings[dirs[j]][0][tempd[dirs[j]][k].name]) {
 						dirlistings[dirs[j]][0][tempd[dirs[j]][k].name] = tempd[dirs[j]][k].modificationDate.getTime();
-						update(dirs[j]+"/"+tempd[dirs[j]][k].name, dirlistings[dirs[j]][1]);
+						update(dirs[j]+"\\"+tempd[dirs[j]][k].name, dirlistings[dirs[j]][1]);
 					}
 					else if(dirlistings[dirs[j]][0][tempd[dirs[j]][k].name] == null) {
 						dirlistings[dirs[j]][0][tempd[dirs[j]][k].name] = tempd[dirs[j]][k].modificationDate.getTime();
-						update(dirs[j]+"/"+tempd[dirs[j]][k].name, dirlistings[dirs[j]][1]);
+						update(dirs[j]+"\\"+tempd[dirs[j]][k].name, dirlistings[dirs[j]][1]);
 					}
 				}
 			}
