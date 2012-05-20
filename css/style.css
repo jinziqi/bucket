@@ -13,9 +13,10 @@
     -webkit-border-image: url(../images/workspace.png) 1 2 2 2 stretch stretch;	
 }
 #lefNav {
-	padding-top: 60px;
-	width: 200px;
+	width: 199px;
+	height: 100%;
 	float: left;
+	border-right: 1px solid #d1d1d1;
 }
 .navigation {
 	display: block;
@@ -27,9 +28,13 @@
 	color: #333;
 }
 
+.navigation:nth-child(1) {
+	margin-top: 40px;
+}
+
 .contentView {
 	display: none;
-	padding: 20px;
+	margin-top: 20px;
 }
 
 #mainContent {
@@ -37,6 +42,64 @@
 	width: 610px;
 	float: right;
 }
+
+/*Manage Rules*/
+.ruleContainer {
+	width: 100%;
+	height: 60px;
+}
+.ruleContainer:nth-child(even) {
+	background-color: #f8f8f8;
+}
+.ruleTitle {
+	float: left;
+	margin: 24px 0px 0px 20px;
+	font-size: 18px;
+}
+.ruleOptions {
+	float: right;
+	margin-top: 15px;
+	font-size: 14px;
+}
+.editRule {
+	display: inline-block;
+	height: 22px;
+	width: 80px;
+	background: #26ab6c;
+	padding-top: 8px;
+	margin-right: 10px;
+	color: #ffffff;
+	cursor: pointer;
+}
+.editRule:hover {
+	background: #3079ed;
+}
+.removeRule {
+	display: inline-block;
+	height: 22px;
+	width: 80px;
+	background: #c60000;
+	padding-top: 8px;
+	margin-right: 10px;
+	color: #ffffff;
+	cursor: pointer;
+}
+.removeRule:hover {
+	background: #cc3b3b;
+}
+
+
+/*Edit Rules*/
+#ruleForm {
+	text-align: left;
+	margin-left: 20px;
+}
+
+
+
+
+
+
 #grip {
     position: absolute;
     right: 8px;
