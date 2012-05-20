@@ -12,6 +12,20 @@
     border-width: 1 2 2 2;
     -webkit-border-image: url(../images/workspace.png) 1 2 2 2 stretch stretch;	
 }
+
+#mainContent {
+	height: 100%;
+	width: 610px;
+	float: right;
+	background: #f1f1f1;
+}
+
+/*Navigation*/
+#logo {
+	width: 150px;
+	margin: 40px 0px 20px 0px;
+}
+
 #lefNav {
 	width: 199px;
 	height: 100%;
@@ -28,8 +42,26 @@
 	color: #333;
 }
 
+.navActive {
+	background: #26ab6c;
+	cursor: pointer;
+	color: #ffffff;
+}
+
+.navActive:hover {
+	background: #26ab6c !important;
+	cursor: default !important;
+	color: #ffffff;
+}
+
+.navigation:hover {
+	background: #2bc079;
+	cursor: pointer;
+	color: #ffffff;
+}
+
 .navigation:nth-child(1) {
-	margin-top: 40px;
+	margin-top: 60px;
 }
 
 .contentView {
@@ -37,18 +69,67 @@
 	margin-top: 20px;
 }
 
-#mainContent {
-	height: 100%;
-	width: 610px;
-	float: right;
+
+
+
+
+/*Welcome Screen*/
+#welcomeTitle {
+	display: block;
+	font-size: 22px;
+	font-weight: bold;
+	margin-top: 60px;
+}
+#welcomeText {
+	display: block;
+	margin-top: 20px;
+	width: 500px;
+	font-size: 15px;
+	line-height: 20px;
 }
 
 /*Manage Rules*/
+#ruleDescription {
+	font-size: 15px;
+	line-height: 20px;
+	height: 40px;
+	display: block;
+	padding: 20px;
+}
+#addRule {
+	display: block;
+	font-size: 16px;
+	left: 20px;
+	height: 22px;
+	width: 100px;
+	background: #26ab6c;
+	padding-top: 8px;
+	color: #ffffff;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
+#manageRules {
+	position:relative;
+}
+
+#ruleList {
+	position: absolute;
+	width:100%;
+	height: 350px;
+	overflow: scroll;
+	overflow-x: hidden;
+	border-top: 1px solid #d1d1d1;
+}
+
+#addRule:hover {
+	background: #229660;
+}
+
 .ruleContainer {
 	width: 100%;
 	height: 60px;
 }
-.ruleContainer:nth-child(even) {
+.ruleContainer:nth-child(odd) {
 	background-color: #f8f8f8;
 }
 .ruleTitle {
@@ -72,30 +153,48 @@
 	cursor: pointer;
 }
 .editRule:hover {
-	background: #3079ed;
+	background: #229660;
 }
 .removeRule {
 	display: inline-block;
 	height: 22px;
 	width: 80px;
-	background: #c60000;
+	background: #6d6d6d;
 	padding-top: 8px;
-	margin-right: 10px;
+	margin-right: 20px;
 	color: #ffffff;
 	cursor: pointer;
 }
 .removeRule:hover {
-	background: #cc3b3b;
+	background: #5e5e5e;
 }
 
 
 /*Edit Rules*/
 #ruleForm {
 	text-align: left;
-	margin-left: 20px;
+	margin: 20px 0px 0px 20px;
+	font-size: 15px;
+}
+#editRuleTable tr {
+	display: block;
+	margin-top: 20px;
 }
 
+#ruleForm p {
+	margin-top: 40px;
+}
 
+#folderBrowse {
+	height: 30px;
+	width: 80px;
+	background: #26ab6c;
+	padding-top: 3px;
+	margin-right: 10px;
+	color: #ffffff;
+	cursor: pointer;
+	border: 0px;
+}
 
 
 
