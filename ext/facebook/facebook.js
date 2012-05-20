@@ -10,7 +10,7 @@ var Facebook = {
 		  //This will need to be updated to expand and handle more document types
 		  var extension = path.substr( (path.lastIndexOf('.') +1) );
 		  var params = "";
-		  if(extension == 'jpg')
+		  if(extension.toLowerCase() == 'jpg')
 		  {
 			url = "https://graph.facebook.com/me/photos?access_token=" + access_token;
 			params = "message=happybucket";
