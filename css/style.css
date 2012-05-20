@@ -309,12 +309,37 @@
 	margin-top: 20px;
 	margin-right: 20px;
 	border: 1px solid #d1d1d1;
+	width: 100%;
 }
 
 #serviceTable tr {
+	display: block;
 	height: 60px;
+	width: 100%;
 }
 
+#serviceTable td {
+	display: block;
+	height: 100%;
+}
+
+#serviceTable tbody {
+	display: block !important;
+	width: 100% !important;
+}
+
+.serviceSelector {
+	height: 30px;
+	display: block;
+	padding-top: 22px;
+	text-indent: 10px;
+	color: #333;
+}
+
+.serviceSelector:hover {
+	color: #26ab6c;
+	cursor: pointer;
+}
 
 #serviceTable tr:nth-child(odd) {
 	background-color: #f8f8f8;
