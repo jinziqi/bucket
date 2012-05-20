@@ -1,11 +1,10 @@
+var appDirs = new Array;
 
 $(function() {
 	var prefsFile; // The preferences file
 	var prefsXML; // The XML data
 	var stream; // The FileStream object used to read and write prefsFile data.
-	var appRules = new Array;
-	var appDirs = new Array;
-
+	
 	/**
 	* Called when the application content is loaded. The method points the prefsFile File object 
 	* to the "preferences.xml prefsFile in the Apollo application store directory, which is uniquely 
@@ -50,20 +49,28 @@ $(function() {
 		stream.close();
 		var domParser = new DOMParser();
 		prefsXML = domParser.parseFromString(prefsXML, "text/xml");
-		var rules = prefsXML.getElementsByTagName("rule");
-
-		for(var i = 0; i<rules.length; i++) {
-			if(rules[i]) {
-				appRules[rules[i].getElementsByTagName('type')[0].firstChild.nodeValue] = rules[i].getElementsByTagName('svc')[0].firstChild.nodeValue;
-			}
-		}
-
 		var dirs = prefsXML.getElementsByTagName("dir");
+
 		for(var i = 0; i<dirs.length; i++) {
 			if(dirs[i]) {
-				appDirs.push(dirs[i].firstChild.nodeValue);
+				var dir_config = new Object;
+				dir_config.folder = dirs[i].getElementsByTagName('folder')[0].firstChild.nodeValue;
+				dir_config.title = dirs[i].getElementsByTagName('title')[0].firstChild.nodeValue;
+				dir_config.rules = new Array;
+				var rules = dirs[i].getElementsByTagName('rule');
+				for(var j = 0; j<rules.length; j++) {
+					if(rules[i]) {
+						var rule_config = new Object;
+						rule_config.type = rules[j].getElementsByTagName('type')[0].firstChild.nodeValue;
+						rule_config.svc = rules[j].getElementsByTagName('svc')[0].firstChild.nodeValue;
+
+						dir_config.rules.push(rule_config);
+					}
+				}
+				appDirs.push(dir_config);
 			}
 		}
+		loadDataIntoDom();
 	}
 
 	/**
@@ -85,6 +92,29 @@ $(function() {
 		createXMLData();
 		writeXMLData();
 	}
+
+	function loadDataIntoDom()
+	{
+		for(var i=0; i<appDirs.length; i++) {
+			var rule_html = '<div class="ruleContainer">';
+			rule_html += '<div class="ruleTitle">';
+			rule_html += appDirs[i].title;
+			rule_html += '</div>';
+			rule_html += '<div class="ruleOptions">';
+			rule_html += '<a rule_id="'+i+'" class="editRule">Edit</a>';
+			rule_html += '<a rule_id="'+i+'" class="removeRule">Remove</a>';
+			rule_html += '</div>';
+			rule_html += '</div>';
+		}
+		$('#ruleList').html(rule_html);
+		$('.editRule').click(function(){
+			hideViews();
+			$('#addRules').show();
+			var rule_id = $(this).attr('rule_id');
+			$('#ruleName').val(appDirs[rule_id].title);
+		});
+	}
+
 	/**
 	* Creates the XML object with data based on the window state and the 
 	* current time.
@@ -93,15 +123,24 @@ $(function() {
 	{
 		var cr = air.File.lineEnding;
 		prefsXML =   "<config>" + cr
-					+ "    <rules>" + cr
-					+ "        <rule>" + cr
-					+ "            <type></type>" + cr
-					+ "            <svc></svc>" + cr
-					+ "        </rule>" + cr
-					+ "    </rules>" + cr
-					+ "    <dirs>" + cr
-					+ "        <dir></dir>" + cr
-					+ "    </dirs>" + cr
+					+ "    <dirs>" + cr;
+
+		for(var i=0; i<appDirs.length; i++) {
+			prefsXML += "        <dir>" + cr
+					+ "            <title>"+appDirs[i].title+"</title>" + cr					
+					+ "            <folder>"+appDirs[i].folder+"</folder>" + cr;
+			for(var j=0; j<appDirs[i].rules.length; j++) {
+				prefsXML += "       <rule>" + cr
+					+ "                <type>"+appDirs[i].rules[j].type+"</type>" + cr
+					+ "                <svc>"+appDirs[i].rules[j].svc+"</svc>" + cr
+					+ "            </rule>" + cr;
+			}
+
+			prefsXML += "        </dir>" + cr;
+		}
+
+
+		prefsXML += "    </dirs>" + cr
 					+ "</config>";
 	}
 

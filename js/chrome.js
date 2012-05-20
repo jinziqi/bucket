@@ -21,7 +21,7 @@ $(function() {
 
 	var iconLoadComplete = function(event) {
 		trayIcon.bitmaps = [event.target.content.bitmapData];
-		trayIcon.tooltip = "Bucket!!!";
+		trayIcon.tooltip = "The bucket is happy";
 	};	
 
 	if(air.NativeApplication.supportsSystemTrayIcon) {
