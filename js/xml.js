@@ -14,7 +14,7 @@ $(function() {
 	function xml_init()
 	{
 		window.nativeWindow.addEventListener(air.Event.CLOSING, windowClosingHandler); 
-		prefsFile = air.File.applicationDirectory;
+		prefsFile = air.File.applicationStorageDirectory;
 		prefsFile = prefsFile.resolvePath("config.xml"); 
 		readXML();
 	}
@@ -83,7 +83,7 @@ $(function() {
 	function saveData()
 	{
 		createXMLData();
-		//writeXMLData();
+		writeXMLData();
 	}
 	/**
 	* Creates the XML object with data based on the window state and the 
