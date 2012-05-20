@@ -55,7 +55,9 @@ var Picasa ={
 		
 			if(token.length>0){
 				Picasa.saveToken(getQuerystring(newHTMLLoader.location,'token'),
-				getQuerystring(newHTMLLoader.location,'refresh'))
+				getQuerystring(newHTMLLoader.location,'refresh'));
+				newHTMLLoader.stage.nativeWindow.close();
+				    return true;
 			}
 		  }
 		//var myWindow=window.open(Picasa.googleLogin(),"mywindow","width=550,height=550");
@@ -75,7 +77,7 @@ var Picasa ={
 	},
 	getAccessToken:function()
 	{
-		$.post('http://happybucket.com/ct/xt_custom_code.bix?c={CCBCE38D-2EA2-4919-B530-6E30FBA111F9}&event=google_access_token', {'code': 'kACAH-1Ng1SFvdjaJdMKxnajxxEwNaO2Op0jHXSTs9a7g8SMwBQ4EwJum7AOPkr2y_RMH3y9gAwzFzqwkZQYNIAjN2QnMxHGMTuoOxdbiWtwnQ9_pfY24MuG1s',
+		$.post('http://happybucket.com/ct/xt_custom_code.bix?c={CCBCE38D-2EA2-4919-B530-6E30FBA111F9}&event=google_access_token', {'code': PicasaConfig.read("picasa"),
 		'client_id':'85959154006-m68f33t69ar0b4ttnp1u7sh94ceq9aot.apps.googleusercontent.com',
 		'client_secret':'X_Xa3yQb71J46q_5q3_HPlJ7',
 		'redirect_uri':'http%3A%2F%2Fhappybucket.com%2Fct%2Fxt_custom_code.bix%3Fc%3D%257BCCBCE38D-2EA2-4919-B530-6E30FBA111F9%257D%26event%3Dcallback',
@@ -92,10 +94,37 @@ var Picasa ={
 	saveToken:function(access,refresh)
 	{
 		var cr = air.File.lineEnding;
-		var prefsFile = air.File.applicationStorageDirectory.resolvePath("token");
-		stream = new air.FileStream();
+		PicasaConfig.write("picasa", access+cr+refresh);
+	}
+}
+var PicasaConfig = {
+	//write data to file name
+	write:function(fileName, data)
+	{
+		var prefsFile = PicasaConfig.get(fileName);
+		var stream = new air.FileStream();
 		stream.open(prefsFile, air.FileMode.WRITE);
-		stream.writeUTFBytes(access+ cr +refresh);
+		stream.writeUTFBytes(data);
 		stream.close();
+	},
+	//return data from file name
+	read:function(fileName)
+	{
+		var prefsFile = PicasaConfig.get(fileName);
+		var stream = new air.FileStream();
+		if (prefsFile.exists) {
+			stream.open(prefsFile, air.FileMode.READ);
+		}
+		data = stream.readUTFBytes(stream.bytesAvailable);
+		stream.close();
+		return $.trim(data);
+	},
+	//get file
+	get:function(fileName)
+	{
+		prefsFile = air.File.applicationStorageDirectory;
+		prefsFile = prefsFile.resolvePath(fileName);
+		air.trace(prefsFile.nativePath)
+		return prefsFile;
 	}
 }
