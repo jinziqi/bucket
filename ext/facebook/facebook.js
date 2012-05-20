@@ -6,7 +6,7 @@ var Facebook = {
 	upload:function(path)
 	{
 		  if(access_token)
-		  	 access_token = fh.read(config)
+		  	 access_token = Facebook.getAccessToken();
 		
 		  url = "https://graph.facebook.com/me/photos?access_token=" + access_token;
 		  boundary = '--------------======-------------------AaB03x';
@@ -87,6 +87,8 @@ var Facebook = {
 		var token = fh.read(config);
 		if(token.length > 0)
 			return token;
+		else
+			return false;
 	},
 	facebookLogin:function()
 	{
