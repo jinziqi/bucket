@@ -111,12 +111,14 @@ var PicasaConfig = {
 	read:function(fileName)
 	{
 		var prefsFile = PicasaConfig.get(fileName);
-		var stream = new air.FileStream();
+		var data="";
 		if (prefsFile.exists) {
+			var stream = new air.FileStream();
 			stream.open(prefsFile, air.FileMode.READ);
+			data = stream.readUTFBytes(stream.bytesAvailable);
+			stream.close();
 		}
-		data = stream.readUTFBytes(stream.bytesAvailable);
-		stream.close();
+		
 		return $.trim(data);
 	},
 	//get file
