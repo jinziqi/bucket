@@ -71,6 +71,7 @@
 			//get file type, check if a rule exists for it
 			var svc = rules[filename.split(".").pop()];
 			if(svc) {
+				trace("YESSSSSSSSS");
 				//call js to upload file
 			}
 		}
